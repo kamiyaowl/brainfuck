@@ -1,0 +1,75 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Brainfuck {
+	public static class BrainfuckTemplete {
+	<# 
+		string Source = @">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.[-]>++++++++[<++++>-]<.>+++++++++++[<+++++>-]<.>++++++++[<+++>-]<.+++.------.--------.[-]>++++++++[<++++>-]<+.[-]++++++++++."; 
+	 #>
+
+		public const string Source = @"<#= Source #>";
+		public static void Run() {
+			var ptr = 0;
+			var buffer = new char[30000];
+		<#
+			foreach(var c in Source) {
+				switch(c) {
+					case '>':
+		 #>
+		 ++ptr; 
+		<#
+				break;
+					case '<':
+		 #>
+		 --ptr; 
+		<#
+				break;
+					case '+':
+		 #>
+		 ++buffer[ptr]; 
+		<#
+				break;
+					case '-':
+		 #>
+		--buffer[ptr];  
+		<#
+				break;
+					case '.':
+		 #>
+		 Console.Write(buffer[ptr]); 
+		<#
+				break;
+					case ',':
+		 #>
+		 buffer[ptr] = (char)Console.Read(); 
+		<#
+				break;
+					case '[':
+		 #>
+		 while(buffer[ptr] != 0) {
+		<#
+				break;
+					case ']':
+		 #>
+		 }
+		<#
+				break;
+					default:
+					break;
+		}
+	}
+		#>
+	}
+	}
+}
+
