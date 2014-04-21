@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace Brainfuck {
 	class Program {
 		static void Main(string[] args) {
-			Console.WriteLine(BrainfuckTemplete.Source);
-			BrainfuckTemplete.Run();
+			string src = @">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.[-]>++++++++[<++++>-]<.>+++++++++++[<+++++>-]<.>++++++++[<+++>-]<.+++.------.--------.[-]>++++++++[<++++>-]<+.[-]++++++++++.";
+			src.Brainfuck();
 			Console.ReadLine();
 		}
 	}
